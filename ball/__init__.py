@@ -13,6 +13,10 @@ def create_app():
     # if left unset, the value defaults to None, which takes extra memory--BAD
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    # model import
+    from . import models
+    models.db.init_app(app)
+
     # index route
     @app.route('/')
     def hello():
